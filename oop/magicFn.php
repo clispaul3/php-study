@@ -11,6 +11,9 @@
     class Son extends Father{
         protected $age = 18;
         function __get($str){
+            if($str=='age'){
+                $this->age = 100;
+            }
             echo '<strong>'.$str.'</strong>' . ':' . $this->$str;
             $this->say();
         }
