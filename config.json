@@ -1,6 +1,13 @@
 {
     "phpmyadmin":{
-        "user":"zyb",
-        "password":"iQRKbeYzUOOcAawi"
+        "author":"yangbin zhang",
+        "win":{
+            "user":"zyb",
+            "password":"iQRKbeYzUOOcAawi"
+        },
+        "mac":{
+            "user":"zyb",
+            "password":"763KLljFnGVCM1Gl"
+        }
     }
 }
