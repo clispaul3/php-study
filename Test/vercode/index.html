@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <title>验证码</title>
+    <style>
+        form{
+           padding:10px;
+           border:1px solid #ddd;
+           border-radius:5px;
+           width:200px;
+        }
+        input{
+            padding:5px 10px;
+            border-radius:3px;
+            width:60px;
+            outline:none;
+        }
+        button{
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>
+            <input type="text">
+        </label>
+        <img class="vercode" src="./index.php"/>
+        <br><br>
+        <button class="btn-submit">提交</button>
+    </form>
+</body>
+</html>
+<script>
+    const vercode = document.querySelector('.vercode')
+    let codestr = ''
+    document.querySelector('.btn-submit').onclick = (ev)=>{
+        ev.preventDefault()
+        const inputval = document.querySelector('input').value
+        if(inputval==codestr){
+            alert('验证成功')
+            window.location.href = './home.php'
+        }else{
+            alert('验证失败')
+            getCode()
+        }
+    }
+    // vercode.onclick = function(){
+    //     getCode()
+    // }
+    getCode()
+    function getCode(){
+        axios.get('./index.php').then(res=>{
+            console.log(encodeURIComponent(res.data))
+            codestr = res.data
+        })
+    }
+</script>
